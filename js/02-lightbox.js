@@ -16,6 +16,14 @@ function createGalleryMarkup(galleryItems) {
 const galleryMarkup = createGalleryMarkup(galleryItems);
 listGallery.insertAdjacentHTML("beforeend", galleryMarkup);
 
+listGallery.addEventListener("click", onGalleryItemClick);
+
+function onGalleryItemClick(event) {
+  event.preventDefault();
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }
+}
 const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionPosition: "bottom",
